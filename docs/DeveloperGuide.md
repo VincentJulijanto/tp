@@ -263,8 +263,27 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 Running coaches
-* Running coaches and track instructors who manage multiple athletes, often in school teams, clubs, academies, or private coaching, similar to how people use Strava to log and review training progress. They care about consistent tracking, quick comparisons over time, and simple ways to spot improvement.
 
+Running coaches and track instructors who manage multiple athletes, often in school teams, clubs, academies, or private coaching, similar to how people use Strava to log and review training progress. They care about consistent tracking, quick comparisons over time, and simple ways to spot improvement.
+
+They typically:
+
+- Manage a significant number of athletes and contacts simultaneously
+- Require fast access to athlete records and performance history
+- Prefer desktop applications over mobile-first interfaces
+- Type quickly and prefer keyboard-based input over mouse-heavy interactions
+- Are reasonably comfortable using CLI-style workflows
+- Value efficiency, minimal friction, and clear text-based summaries
+
+Their primary needs include:
+
+- Consistent logging of timings and results
+- Quick comparisons between athletes
+- Easy tracking of trends and improvements
+- Simple and fast data entry during or after training sessions
+- Clean overview of their entire squad
+
+They care about speed, clarity, and reliability more than visual aesthetics.
 
 **Value proposition**:
 
@@ -276,21 +295,21 @@ Pacebook builds on AB3’s structured contact management system to help running 
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​ | I want to …​ | So that I can…​ |
-|--------|--------|-------------|----------------|
-| `* * *` | running coach | add athlete profiles | keep track of my students’ personal and performance information |
-| `* * *` | running coach | view an athlete’s profile | quickly recall their performance details during training sessions |
-| `* * *` | running coach | view a list of all my athletes | get an overview of my squad |
-| `* * *` | running coach | log running timings for an athlete | track their performance over time |
-| `* *` | running coach | update athlete profile details | ensure their information stays accurate over time |
-| `* *` | running coach | delete athlete profiles | remove students who are no longer under my coaching |
-| `* *` | running coach | search athletes using keywords or tags | quickly locate specific students |
-| `* *` | running coach | view athletes' average times and personal bests | quickly assess their current performance level |
-| `* *` | running coach | see week-to-week improvement indicators | determine whether an athlete is progressing |
-| `*` | running coach onboarding a new squad | import athlete profiles from a CSV file | avoid adding them one by one |
-| `*` | running coach | export athlete profiles to a CSV file | back up data or use it in other systems |
-| `*` | running coach | view performance charts | visually spot trends over time |
-| `*` | running coach | see when an athlete achieves a personal best | recognise improvement and motivate them |
+| Priority | As a                                 | I want to                                       | So that I can                                                     |
+|----------|--------------------------------------|-------------------------------------------------|-------------------------------------------------------------------|
+| `* * *`  | running coach                        | add athlete profiles                            | keep track of my students’ personal and performance information   |
+| `* * *`  | running coach                        | view an athlete’s profile                       | quickly recall their performance details during training sessions |
+| `* * *`  | running coach                        | view a list of all my athletes                  | get an overview of my squad                                       |
+| `* * *`  | running coach                        | log running timings for an athlete              | track their performance over time                                 |
+| `* *`    | running coach                        | update athlete profile details                  | ensure their information stays accurate over time                 |
+| `* *`    | running coach                        | delete athlete profiles                         | remove students who are no longer under my coaching               |
+| `* *`    | running coach                        | search athletes using keywords or tags          | quickly locate specific students                                  |
+| `* *`    | running coach                        | view athletes' average times and personal bests | quickly assess their current performance level                    |
+| `* *`    | running coach                        | see week-to-week improvement indicators         | determine whether an athlete is progressing                       |
+| `*`      | running coach onboarding a new squad | import athlete profiles from a CSV file         | avoid adding them one by one                                      |
+| `*`      | running coach                        | export athlete profiles to a CSV file           | back up data or use it in other systems                           |
+| `*`      | running coach                        | view performance charts                         | visually spot trends over time                                    |
+| `*`      | running coach                        | see when an athlete achieves a personal best    | recognise improvement and motivate them                           |
 
 ### Use cases
 
