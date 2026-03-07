@@ -24,11 +24,13 @@ public class ViewAthleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_VIEW_ATHLETE_SUCCESS = "Athlete Details:\n"
-            + "Name:    %1$s\n"
-            + "Phone:   %2$s\n"
-            + "Email:   %3$s\n"
-            + "Address: %4$s\n"
-            + "Tags:    %5$s";
+            + "Name:      %1$s\n"
+            + "Age:       %2$s\n"
+            + "Phone:     %3$s\n"
+            + "Email:     %4$s\n"
+            + "Address:   %5$s\n"
+            + "StartDate: %6$s\n"
+            + "Tags:      %7$s";
 
     private final Index targetIndex;
 
@@ -52,9 +54,11 @@ public class ViewAthleteCommand extends Command {
                 .strip();
         return new CommandResult(String.format(MESSAGE_VIEW_ATHLETE_SUCCESS,
                 athlete.getName(),
+                athlete.getAge(),
                 athlete.getPhone(),
                 athlete.getEmail(),
                 athlete.getAddress(),
+                athlete.getStartDate(),
                 tags.isEmpty() ? "-" : tags));
     }
 
