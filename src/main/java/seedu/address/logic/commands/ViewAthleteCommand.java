@@ -78,7 +78,7 @@ public class ViewAthleteCommand extends Command {
                 result.append("  ")
                         .append(i++)
                         .append(". ")
-                        .append(timing)
+                        .append(timing.getPrintFormat())
                         .append("\n");
             }
         }

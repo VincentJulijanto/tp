@@ -3,26 +3,21 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 /**
- * Represents a timing record for a run distance.
+ * Represents a 2.4km run timing record.
  */
 public class RunTiming {
 
-    private final double distance;
+    private static final double DISTANCE = 2.4;
+
     private final int minutes;
     private final double seconds;
 
-    public RunTiming(double distance, int minutes, double seconds) {
-        requireNonNull(distance);
+    public RunTiming(int minutes, double seconds) {
         requireNonNull(minutes);
         requireNonNull(seconds);
 
-        this.distance = distance;
         this.minutes = minutes;
         this.seconds = seconds;
-    }
-
-    public double getDistance() {
-        return distance;
     }
 
     public int getMinutes() {
@@ -33,12 +28,20 @@ public class RunTiming {
         return seconds;
     }
 
+    public double getDistance() {
+        return DISTANCE;
+    }
+
     public double getTotalSeconds() {
         return minutes * 60 + seconds;
     }
 
+    public String getPrintFormat() {
+        return DISTANCE + ", " + minutes + "min " + seconds + "s";
+    }
+
     @Override
     public String toString() {
-        return distance + "km in " + minutes + "min " + seconds + "s";
+        return DISTANCE + "km in " + minutes + "min " + seconds + "s";
     }
 }

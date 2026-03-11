@@ -12,15 +12,12 @@ public class AddTimingCommandParser implements Parser<AddTimingCommand> {
     @Override
     public AddTimingCommand parse(String args) throws ParseException {
 
-        ArgumentMultimap map =
-                ArgumentTokenizer.tokenize(args,
-                        PREFIX_DISTANCE,
-                        PREFIX_MIN,
-                        PREFIX_SEC);
+        ArgumentMultimap map = ArgumentTokenizer.tokenize(args,
+                PREFIX_MIN,
+                PREFIX_SEC);
 
         Index index = ParserUtil.parseIndex(map.getPreamble());
 
-        double distance = Double.parseDouble(map.getValue(PREFIX_DISTANCE).get());
         int minutes = Integer.parseInt(map.getValue(PREFIX_MIN).get());
         double seconds = Double.parseDouble(map.getValue(PREFIX_SEC).get());
 
@@ -28,7 +25,7 @@ public class AddTimingCommandParser implements Parser<AddTimingCommand> {
             throw new ParseException("Invalid timing: total time must be greater than 0");
         }
 
-        RunTiming timing = new RunTiming(distance, minutes, seconds);
+        RunTiming timing = new RunTiming(minutes, seconds);
 
         return new AddTimingCommand(index, timing);
     }

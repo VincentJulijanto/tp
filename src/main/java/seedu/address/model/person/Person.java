@@ -23,6 +23,7 @@ public class Person {
     private final Age age;
     private final Phone phone;
     private final Email email;
+    private int bestTime;
 
     // Data fields
     private final Address address;
@@ -42,6 +43,7 @@ public class Person {
         this.address = address;
         this.startDate = startDate;
         this.tags.addAll(tags);
+        this.bestTime = Integer.MAX_VALUE;
     }
 
     public Name getName() {
@@ -80,8 +82,23 @@ public class Person {
         return Collections.unmodifiableList(runTimings);
     }
 
-    public void addRunTiming(RunTiming timing) {
+    public boolean addRunTiming(RunTiming timing) {
         runTimings.add(timing);
+        double bestTime = getBestTime();
+        if (bestTime == timing.getTotalSeconds()) {
+            return true;
+        }
+        return false;
+    }
+
+    private double getBestTime() {
+        double bestTime = Double.MAX_VALUE;
+        for (RunTiming time : runTimings) {
+            if (bestTime > time.getTotalSeconds()) {
+                bestTime = time.getTotalSeconds();
+            }
+        }
+        return bestTime;
     }
 
     /**
