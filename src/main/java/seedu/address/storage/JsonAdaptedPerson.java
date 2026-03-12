@@ -93,31 +93,63 @@ class JsonAdaptedPerson {
             personTags.add(tag.toModelType());
         }
 
-        final List<RunTiming> runTimings = new ArrayList<>();
-        for (JsonAdaptedRunTiming timing : timings) {
-            runTimings.add(timing.toModelType());
-        }
-
         if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Name.class.getSimpleName()));
         }
-
+        if (!Name.isValidName(name)) {
+            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        }
         final Name modelName = new Name(name);
+
+        if (age == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Age.class.getSimpleName()));
+        }
+        if (!Age.isValidAge(age)) {
+            throw new IllegalValueException(Age.MESSAGE_CONSTRAINTS);
+        }
         final Age modelAge = new Age(age);
+
+        if (phone == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Phone.class.getSimpleName()));
+        }
+        if (!Phone.isValidPhone(phone)) {
+            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        }
         final Phone modelPhone = new Phone(phone);
+
+        if (email == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Email.class.getSimpleName()));
+        }
+        if (!Email.isValidEmail(email)) {
+            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        }
         final Email modelEmail = new Email(email);
+
+        if (address == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Address.class.getSimpleName()));
+        }
+        if (!Address.isValidAddress(address)) {
+            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        }
         final Address modelAddress = new Address(address);
+
+        if (startDate == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    StartDate.class.getSimpleName()));
+        }
+        if (!StartDate.isValidStartDate(startDate)) {
+            throw new IllegalValueException(StartDate.MESSAGE_CONSTRAINTS);
+        }
         final StartDate modelStartDate = new StartDate(startDate);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        Person person = new Person(modelName, modelAge, modelPhone, modelEmail,
+        return new Person(modelName, modelAge, modelPhone, modelEmail,
                 modelAddress, modelStartDate, modelTags);
-
-        for (RunTiming timing : runTimings) {
-            person.addRunTiming(timing);
-        }
-
-        return person;
     }
 }
