@@ -109,8 +109,10 @@ public class EditCommand extends Command {
         StartDate updatedStartDate = editPersonDescriptor.getStartDate().orElse(personToEdit.getStartDate());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedAge, updatedPhone,
+        Person editedPerson = new Person(updatedName, updatedAge, updatedPhone,
                 updatedEmail, updatedAddress, updatedStartDate, updatedTags);
+        editedPerson.setRunTimings(personToEdit.getRunTimings());
+        return editedPerson;
     }
 
     @Override
