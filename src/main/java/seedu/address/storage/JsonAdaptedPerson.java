@@ -16,6 +16,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.RunTiming;
 import seedu.address.model.person.StartDate;
 import seedu.address.model.tag.Tag;
 
@@ -44,7 +45,8 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email,
             @JsonProperty("address") String address,
             @JsonProperty("startDate") String startDate,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags,
+            @JsonProperty("timings") List<JsonAdaptedRunTiming> timings) {
 
         this.name = name;
         this.age = age;
@@ -148,7 +150,14 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelAge, modelPhone, modelEmail,
+        final List<RunTiming> personTimings = new ArrayList<>();
+        for (JsonAdaptedRunTiming timing : timings) {
+            personTimings.add(timing.toModelType());
+        }
+
+        Person person = new Person(modelName, modelAge, modelPhone, modelEmail,
                 modelAddress, modelStartDate, modelTags);
+        person.setRunTimings(personTimings);
+        return person;
     }
 }

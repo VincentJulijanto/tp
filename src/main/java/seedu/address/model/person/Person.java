@@ -147,6 +147,17 @@ public class Person {
     }
 
     /**
+     * Replaces the current run timings with the given list.
+     * Used when restoring timings from storage.
+     *
+     * @param timings The list of {@link RunTiming} records to set.
+     */
+    public void setRunTimings(List<RunTiming> timings) {
+        this.runTimings.clear();
+        this.runTimings.addAll(timings);
+    }
+
+    /**
      * Adds a new run timing record for the athlete.
      *
      * <p>The timing will be appended to the list of recorded timings.
