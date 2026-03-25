@@ -17,7 +17,7 @@ public class HelpCommand extends Command {
             "Commands summary:\n"
                     + "------------------------------------------------------\n"
                     + "addathlete    n/NAME a/AGE p/PHONE e/EMAIL ad/ADDRESS d/START_DATE [t/TAG]...\n"
-                    + "addtiming     INDEX min/MINUTES sec/SECONDS\n"
+                    + "addtiming     INDEX dist/DISTANCE min/MINUTES sec/SECONDS\n"
                     + "deleteathlete INDEX\n"
                     + "deletetiming  ATHLETE_INDEX TIMING_INDEX\n"
                     + "edit          INDEX [n/NAME] [a/AGE] [p/PHONE] [e/EMAIL] [ad/ADDRESS] [d/START_DATE] [t/TAG]...\n"

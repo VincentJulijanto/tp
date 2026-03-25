@@ -43,7 +43,7 @@ public class AddTimingCommandParser implements Parser<AddTimingCommand> {
         if (map.getValue(PREFIX_DISTANCE).isEmpty() ||
                 map.getValue(PREFIX_MIN).isEmpty() ||
                 map.getValue(PREFIX_SEC).isEmpty()) {
-            throw new ParseException("Missing required fields: dist/ min/ sec/");
+            throw new ParseException("Missing required fields: dist/DISTANCE min/MINUTES sec/SECONDS");
         }
 
         Index index;
