@@ -235,18 +235,19 @@ Customized example:
 
 ---
 
-### Finding athletes by name : `find`
+### Finding athletes by name and/or tag and/or phone number: `find`
 
-Finds athletes whose names contain any of the given keywords.
+Finds all persons whose names contain any of
+the specified name keywords (case-insensitive), whose tags contain any of the specified tag keywords
+(case-insensitive), or whose phone numbers contain any of the specified phone numbers
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find n/KEYWORD p/PHONE_NUMBER t/TAG t/ANOTHER_TAG t/ANOTHER_TAG ...`
 
-* The search is case-insensitive. e.g. `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only names are searched.
+* The search is case-insensitive. e.g. `n/hans` will match `n/Hans`
+* The order of the search criteria does not matter. e.g. `n/Jessy t/captain` will match `t/captain n/Jessy`
 * Only full words will be matched. e.g. `Han` will not match `Hans`
-* Athletes matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Athletes must satisfy all the criteria (i.e. `AND` search).
+  e.g. `n/Alex t/Marathoner` will return only the athlete with the names Alex and tag Marathoner
 
 Warnings:
 * `find` does not search phone number, address, tags, or timing records.
@@ -256,12 +257,14 @@ Expected output:
 * Only athletes matching the given keywords are shown.
 
 Examples:
-* `find John`
-* `find alex david`
+* `find n/John`
+* `find n/alex t/sprinter`
 
 Customized example:
 * If you coach many athletes and want to pull up all athletes named Alex before an interval session:
-    * `find Alex`
+    * `find n/Alex`
+* If you coach many athletes and want to pull up all the sprinters in the team:
+    * `find t/sprinter`
 
 ---
 
