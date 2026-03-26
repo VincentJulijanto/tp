@@ -64,10 +64,10 @@ public class EditPersonDescriptorTest {
     }
 
     @Test
-public void toStringMethod() {
-    EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-    String expected = EditPersonDescriptor.class.getCanonicalName()
-            + "{name=null, phone=null, email=null, address=null, emergencyContact=null, tags=null}";
-    assertEquals(expected, editPersonDescriptor.toString());
-}
+    public void toStringMethod() {
+        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+        String expected = EditPersonDescriptor.class.getCanonicalName()
+                + "{name=null, phone=null, email=null, address=null, emergencyContact=null, tags=null}";
+        assertEquals(expected, editPersonDescriptor.toString());
+    }
 }
