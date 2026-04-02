@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AVAILABLE_DAY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.AvailableDayContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PhoneContainsKeywordsPredicate;
@@ -37,11 +39,11 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         // Get the hashmap of prefixes to their string list
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME,
-                PREFIX_TAG, PREFIX_PHONE);
+                PREFIX_TAG, PREFIX_PHONE, PREFIX_AVAILABLE_DAY);
 
         // If the obtained multimap does not have at least one prefix,
         // or if there is a non-empty preamble, then it is an error
-        if (!isOnePrefixPresent(argMultimap, PREFIX_NAME, PREFIX_TAG, PREFIX_PHONE)
+        if (!isOnePrefixPresent(argMultimap, PREFIX_NAME, PREFIX_TAG, PREFIX_PHONE, PREFIX_AVAILABLE_DAY)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     FindCommand.MESSAGE_USAGE));
@@ -57,9 +59,14 @@ public class FindCommandParser implements Parser<FindCommand> {
             new TagContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_TAG));
         PhoneContainsKeywordsPredicate phonePredicate =
             new PhoneContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_PHONE));
+        AvailableDayContainsKeywordsPredicate availableDayPredicate =
+                new AvailableDayContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_AVAILABLE_DAY));
 
         // Compose the predicates
-        Predicate<Person> compositePredicate = namePredicate.and(tagPredicate).and(phonePredicate);
+        Predicate<Person> compositePredicate = namePredicate
+                .and(tagPredicate)
+                .and(phonePredicate)
+                .and(availableDayPredicate);
 
         // Return the appropriate find command object
         return new FindCommand(compositePredicate);
