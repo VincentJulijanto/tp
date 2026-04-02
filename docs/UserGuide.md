@@ -15,6 +15,17 @@ Pacebook is a **desktop application designed for running coaches to manage runne
 Unlike generic contact management tools, Pacebook is tailored specifically for **training environments**, where quick access to structured runner data is critical for planning and execution.
 
 ---
+## Table of Contents
+
+- [Pacebook](#pacebook)
+- [Target Users](#target-users)
+- [Assumptions About Users](#assumptions-about-users)
+- [User Needs Addressed](#user-needs-addressed)
+- [Quick start](#quick-start)
+- [Features](#features)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
 
 ## Target Users
 
