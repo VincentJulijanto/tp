@@ -19,6 +19,7 @@ Package Model as ModelPackage <<Rectangle>> {
     Class Email
     Class Name
     Class Phone
+    Class EmergencyContact
     Class RunTiming {
         distance
         minutes
@@ -54,6 +55,7 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> StartDate
+Person *--> EmergencyContact
 Person *--> "*" Tag
 Person *--> "*" RunTiming : stores
 
@@ -62,7 +64,8 @@ UniquePersonList -[hidden]right-> I
 
 Name -[hidden]right-> Age
 Age -[hidden]right-> Phone
-Phone -[hidden]right-> Address
+Phone -[hidden]right-> EmergencyContact
+EmergencyContact -[hidden]right-> Address
 Address -[hidden]right-> Email
 Email -[hidden]right-> StartDate
 StartDate -[hidden]right-> Tag
