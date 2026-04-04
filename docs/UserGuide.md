@@ -30,24 +30,36 @@ You do not need to know how to program — just install it once using the links 
 **Checking if you have Java installed** <br>
 1. Open a command terminal
 2. Type the following command and press enter:
-   ```
-   java -version
-   ```
-   If Java has been installed properly, you will see the Java version will be printed.
-   If Java is not installed, you may see something like:
-   ```
-   'java' is not recognized as an internal or external command
-   ```
-   or
-   ```
-   command not found: java
-   ```
-</div>
-   If you do not have Java installed, follow the installation guide for your operating system:
-    - **Windows:** [Java installation guide for Windows](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
-    - **Mac:** [Java installation guide for Mac](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-    - **Linux:** [Java installation guide for Linux](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
-
+  ```
+  java -version
+  ```
+  If Java has been installed properly, you will see the Java version will be printed. <br>
+  For example:
+  
+  ```
+  openjdk version "17.0.12" 2024-07-16
+  ```
+  or
+  ```
+  java version "17.0.9" 2023-10-17 LTS
+  ```
+  
+  If Java is not installed, you may see something like:
+  ```
+  'java' is not recognized as an internal or external command
+  ```
+  or
+  ```
+  command not found: java
+  ```
+  </div>
+  
+  If you do not have Java installed, follow the installation guide for your operating system:
+  <ul>
+    <li>**Windows:** [Java installation guide for Windows](https://se-education.org/guides/tutorials/javaInstallationWindows.html).</li>
+    <li>**Mac:** [Java installation guide for Mac](https://se-education.org/guides/tutorials/javaInstallationMac.html).</li>
+    <li>**Linux:** [Java installation guide for Linux](https://se-education.org/guides/tutorials/javaInstallationLinux.html).</li>
+  </ul>
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W14-4/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for Pacebook.
@@ -68,14 +80,13 @@ You do not need to know how to program — just install it once using the links 
   * `find n/Alex`: Finds an athlete named Alex.
 
   * `exit` : Exits the app.
-
-7. See the [Features](#features) section below for the full list of commands and how to use them.
+  See the [Features](#features) section below for the full list of commands and how to use them.
 
 -------------------------------------------------------------------------------------------------------------------
 
 ## Target Users
 
-Pacebook is designed for **running coaches aged 20–35** in Singapore who.
+Pacebook is designed for **running coaches aged 20–35** in Singapore who:
 - Oversee a roster of **multiple runners** across training groups or teams.
 - Plan and track group **training sessions and fitness benchmarks**.
 - Need **fast access** to athlete data during and between sessions.
@@ -97,7 +108,7 @@ Pacebook is tailored towards running club coaches who are:
 ### Domain Assumptions
 - Familiar with common running formats and distances.
   (e.g. 2.4km fitness tests, 10km runs, marathons, interval sessions).
-- Understand basic performance tracking concepts such as personal bests.
+- Understand basic performance tracking concepts such as **personal best timings**.
 
 ### Usage Assumptions
 - Prefer **speed and keyboard-driven workflows** over point-and-click interfaces.
@@ -117,7 +128,7 @@ manage athlete data regularly:
   tests and monitoring each athlete's personal best over time
 - **Finding athletes quickly** — searching by name, tag, phone number, or
   availability without scrolling through the full list
-- **Organizing athletes for session planning** — sorting by name or personal
+- **Organising athletes for session planning** — sorting by name or personal
   best to prioritize training groups or identify athletes needing attention
 - **Keeping emergency contact details on hand** — storing and accessing
   contact information quickly when needed during sessions
@@ -172,13 +183,12 @@ Example:
 - Avoid using vague names such as `John` if you coach multiple athletes with similar names.
 </div>
 
-<div markdown="block" class="alert alert-warning">
-Duplicate athletes may be rejected if an athlete with the same phone number already exists in Pacebook.
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
+Duplicate athletes may be rejected if an athlete with the **same phone number** already exists in Pacebook.
 </div>
 
-<div markdown="block" class="alert alert-success">
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
-**Expected output:**
 - A success message confirming that the athlete has been added.
 - The athlete appears in the athlete list.
 </div>
@@ -209,14 +219,13 @@ Example:
 * You can remove all the athlete’s tags by typing `t/` without entering anything after it.
 </div>
 
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * Make sure you are editing the correct athlete index in displayed list, especially after using `find`.
 * Editing tags replaces all existing tags, not just one of them.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output:**
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 * A success message showing the updated athlete details.
 </div>
@@ -247,22 +256,18 @@ Examples:
 * You must provide at least one field to search.
 * The order of the search criteria does not matter. e.g. `n/Jessy t/captain` will match `t/captain n/Jessy`
 * Only full words will be matched. e.g. `Han` will not match `Hans`
-* Athletes must satisfy all the criteria (i.e. `AND` search).
+* Athletes must satisfy all the criteria.
   e.g. `n/Alex t/Marathoner` will return only the athlete with the names Alex and tag Marathoner
+* Use `list` to clear the search filter and display all the athletes in Pacebook.
 </div>
 
-<div markdown="block" class="alert alert-info">
-Use `list` to clear the search filter and display all the athletes in Pacebook.
-</div>
-
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * `find` does not support searching by age, email, emergency contact, address, start date or timing record
 * If no athletes match, the list will be empty.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output:**
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 Only athletes matching the given keywords are shown.
 </div>
@@ -279,15 +284,14 @@ Example:
 * Pulling up the full roster to confirm who is registered as a trainee under you:
   * `list`
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
-* All athletes currently stored in Pacebook are displayed.
+All athletes currently stored in Pacebook are displayed.
 </div>
 
 <div markdown="block" class="alert alert-primary">:bulb: **Tips:**
 
-* Use `list` before commands like `viewathlete`, `edit`, and `deleteathlete` if you want to confirm the current athlete indices.
+Use `list` before commands like `viewathlete`, `edit`, and `deleteathlete` if you want to confirm the current athlete indices.
 </div>
 
 ---
@@ -315,22 +319,21 @@ Examples:
   * `name`
   * `pb` (personal best run timing)
 * Supported orders:
-  * `asc`
-  * `desc`
+  * `asc` (ascending)
+  * `desc` (descending)
 * If `order/ORDER` is omitted, the default sort order is ascending.
 * Sorting is applied to the currently displayed athlete list.
 * For `pb`, athletes with no recorded timings will appear after athletes with recorded timings.
 </div>
 
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * `sort` only changes the display order of athletes. It does not modify any athlete data.
 * `pb` refers to the athlete’s personal best across all recorded distances.
 * If no athletes are currently displayed, the command will have no visible effect.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output:**
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 * A success message confirming the field and order used for sorting.
 * The displayed athlete list is reordered accordingly.
@@ -358,8 +361,7 @@ Example:
 * Use `viewathlete` after `find` to quickly inspect one athlete without scrolling through the full list.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 * The selected athlete’s profile is shown.
 * Any stored run timings or training records for that athlete are shown below the profile details.
@@ -393,14 +395,13 @@ Examples:
 * The total timing must be greater than `0`.
 </div>
 
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * If you enter `min/0 sec/0`, the command will be rejected.
 * If the same athlete has multiple timing records, make sure you add the new record to the correct athlete profile.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 * A success message confirming that the timing was added.
 * If the new timing is the athlete’s fastest timing so far, a **new personal best** message is also shown.
@@ -426,14 +427,13 @@ Example:
 * The index **must be a positive number**: `1, 2, 3, …`
 </div>
 
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-danger">:rotating_lights: **Warning:**
 
 This action removes the athlete and their associated training data from the app.
 Please double-check the athlete index in the display list before deleting.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 A success message confirming which athlete was deleted.
 </div>
@@ -461,14 +461,13 @@ Example:
 * Both `ATHLETE_INDEX` and `RECORD_INDEX` must be positive integers: `1, 2, 3, …`
 </div>
 
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * Make sure you check the athlete profile with `viewathlete` first so that you delete the correct timing record.
 * Deleting a timing record may affect the athlete’s visible performance history.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 A success message confirming that the selected timing record was deleted.
 </div>
@@ -486,7 +485,7 @@ Example:
   new squad and need to wipe the previous cohort's data:
   * `clear`
 
-<div markdown="block" class="alert alert-danger">
+<div markdown="block" class="alert alert-danger">:rotating_lights: **Warning:**
 
 * This removes all athletes currently stored in the app.
 * Use this only if you are sure you want to wipe the current dataset.
@@ -497,8 +496,7 @@ Example:
 * Avoid using `clear` if you only want to remove one athlete. Use `deleteathlete` instead.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 * All athletes are removed from the list.
 </div>
@@ -516,8 +514,7 @@ Format: `help`
 Use `help` whenever you forget a command format instead of guessing the prefixes.
 </div>
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 A help window opens with a summary of available commands.
 </div>
@@ -530,8 +527,7 @@ Exits the program.
 
 Format: `exit`
 
-<div markdown="block" class="alert alert-success">
-**Expected output**:
+<div markdown="block" class="alert alert-success">:white_check_mark: **Expected output:**
 
 The application closes.
 </div>
@@ -560,7 +556,7 @@ Pacebook stores its data as a JSON file at `[JAR file location]/data/addressbook
 
 <div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
-If your changes corrupt the data file, Pacebook may discard unreadable data or fail to load it correctly the next time it runs. It is strongly recommended to back up the file before editing it manually.
+If your changes corrupt the data file, Pacebook may discard unreadable data or fail to load it correctly the next time it runs. It is strongly recommended to **back up the file** before editing it manually.<br>
 Furthermore, certain edits can cause Pacebook to behave in unexpected ways if values are outside the accepted format. Edit the data file only if you are confident that you can update it correctly.
 </div>
 
