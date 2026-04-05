@@ -521,7 +521,7 @@ Extensions:
 Use case resumes from step 3.<br><br>
 
 3a. No matching athlete entries found.<br>
-3a1. Pacebook displays a message indicating no matching results and no athletes will be listed.<br>
+   3a1. Pacebook displays a message indicating no matching results and no athletes will be listed.<br>
 
 **UC9 - Sort Athletes by Personal Best or Name**
 
