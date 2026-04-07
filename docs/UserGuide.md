@@ -186,7 +186,7 @@ Example:
 
 - All compulsory fields (i.e. not in square brackets) must be provided.
 - `AGE` must be a number between 10-99.
-- `PHONE_NUMBER` must be a valid Singapore phone number (i.e. 8 digits, starts with 8 or 9).
+- `PHONE` must be a valid Singapore phone number (i.e. 8 digits, starts with 8 or 9).
 - `EMAIL` must be a valid email, i.e. email@domain.
 - `EMERGENCY_CONTACT` can be any non-blank text, e.g. a name and number like `Jane Doe 91234567`. If omitted, it defaults to `N/A`.
 - Avoid using vague names such as `John` if you coach multiple athletes with similar names.
