@@ -113,8 +113,10 @@ public class EditCommand extends Command {
         Set<AvailableDay> updatedAvailableDays = editPersonDescriptor.getAvailableDays()
                 .orElse(personToEdit.getAvailableDays());
 
-        return new Person(updatedName, updatedAge, updatedPhone, updatedEmail, updatedAddress, updatedEmergencyContact,
-                updatedStartDate, updatedTags, updatedAvailableDays);
+        Person editedPerson = new Person(updatedName, updatedAge, updatedPhone, updatedEmail, updatedAddress,
+                updatedEmergencyContact, updatedStartDate, updatedTags, updatedAvailableDays);
+        editedPerson.setRunTimings(personToEdit.getRunTimings());
+        return editedPerson;
     }
 
     @Override
