@@ -6,7 +6,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FindCommand;
@@ -54,11 +57,11 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         // Create the predicates
         NameContainsKeywordsPredicate namePredicate =
-            new NameContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_NAME));
+            new NameContainsKeywordsPredicate(splitKeywords(argMultimap.getAllValues(PREFIX_NAME)));
         TagContainsKeywordsPredicate tagPredicate =
             new TagContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_TAG));
         PhoneContainsKeywordsPredicate phonePredicate =
-            new PhoneContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_PHONE));
+            new PhoneContainsKeywordsPredicate(splitKeywords(argMultimap.getAllValues(PREFIX_PHONE)));
         AvailableDayContainsKeywordsPredicate availableDayPredicate =
                 new AvailableDayContainsKeywordsPredicate(argMultimap.getAllValues(PREFIX_AVAILABLE_DAY));
 
@@ -79,5 +82,15 @@ public class FindCommandParser implements Parser<FindCommand> {
      */
     private static boolean isOnePrefixPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
+    /**
+     * Splits multi-word argument values into individual keywords for predicates that match one word at a time.
+     */
+    private static List<String> splitKeywords(List<String> values) {
+        return values.stream()
+                .flatMap(value -> Arrays.stream(value.trim().split("\\s+")))
+                .filter(keyword -> !keyword.isEmpty())
+                .collect(Collectors.toList());
     }
 }
