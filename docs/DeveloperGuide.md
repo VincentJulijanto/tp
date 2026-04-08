@@ -614,6 +614,14 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Listing all athletes
+1. Viewing all the athletes in the 
+
+### Adding an athlete
+1. Adding a valid athlete while all persons are being shown
+
+    1. Prerequisites: List all persons using the 'list' command.
+
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
