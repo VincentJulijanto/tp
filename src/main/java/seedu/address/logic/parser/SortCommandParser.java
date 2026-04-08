@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DISTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORDER;
 
 import java.util.stream.Stream;
@@ -30,7 +31,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         requireNonNull(args);
 
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_BY, CliSyntax.PREFIX_ORDER);
+                ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_BY, CliSyntax.PREFIX_DISTANCE, CliSyntax.PREFIX_ORDER);
 
         if (!arePrefixesPresent(argMultimap, CliSyntax.PREFIX_BY)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -38,11 +39,23 @@ public class SortCommandParser implements Parser<SortCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_BY, PREFIX_ORDER);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_BY, PREFIX_DISTANCE, PREFIX_ORDER);
         SortField sortField = ParserUtil.parseBy(argMultimap.getValue(PREFIX_BY).get());
+        String distance = null;
+        if (argMultimap.getValue(PREFIX_DISTANCE).isPresent()) {
+            distance = ParserUtil.parseDistance(argMultimap.getValue(PREFIX_DISTANCE).get());
+        }
         SortOrder sortOrder = ParserUtil.parseOrder(argMultimap.getValue(PREFIX_ORDER).orElse("asc"));
 
-        return new SortCommand(sortField, sortOrder);
+        if (sortField == SortField.PB && distance == null) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        }
+
+        if (sortField != SortField.PB && distance != null) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        }
+
+        return new SortCommand(sortField, distance, sortOrder);
     }
 
     /**

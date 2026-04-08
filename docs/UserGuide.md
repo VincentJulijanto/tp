@@ -308,36 +308,42 @@ Use `list` before commands like `viewathlete`, `edit`, and `deleteathlete` if yo
 
 Sorts the displayed athlete list by the specified field.
 
-Format: `sort by/FIELD [ord/ORDER]`
+Format: `sort by/FIELD [dist/DISTANCE] [ord/ORDER]`
 
 Examples:
 * Before selecting runners for the inter-club competition, rank the
   team by their fastest 2.4km timing:
-  * `sort by/pb`
+  * `sort by/pb dist/2.4km`
 * At the start of a new season for team A, get an alphabetical overview of the
   full roster for attendance-taking:
   * `find t/teamA`
   * `sort by/name`
 * Identify who needs the most improvement before the next fitness test:
-  * `sort by/pb ord/desc`
+  * `sort by/pb dist/400m ord/desc`
 
 <div markdown="block" class="alert alert-primary">:bulb: **Tips:**
 
 * Supported fields:
   * `name`
-  * `pb` (personal best 2.4km timing)
+  * `pb` (personal best for the specified event)
+* `dist/DISTANCE` is required when sorting by `pb`.
+* Supported distances for `pb`:
+  * `400m`
+  * `2.4km`
+  * `10km`
+  * `42km`
 * Supported orders:
   * `asc` (ascending)
   * `desc` (descending)
-* If `order/ORDER` is omitted, the default sort order is ascending.
+* If `ord/ORDER` is omitted, the default sort order is ascending.
 * Sorting is applied to the currently displayed athlete list.
-* For `pb`, athletes with no recorded `2.4km` timings will appear after athletes with recorded `2.4km` timings.
+* For `pb`, athletes with no recorded timing for the specified event will appear after athletes with a recorded timing.
 </div>
 
 <div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * `sort` only changes the display order of athletes. It does not modify any athlete data.
-* `pb` refers only to the athlete’s personal best for `2.4km`.
+* `pb` refers only to the athlete’s personal best for the requested event.
 * If no athletes are currently displayed, the command will have no visible effect.
 </div>
 
@@ -596,7 +602,7 @@ Furthermore, certain edits can cause Pacebook to behave in unexpected ways if va
 | **Edit**           | `edit INDEX [n/NAME] [a/AGE] [p/PHONE] [e/EMAIL] [ad/ADDRESS] [d/START_DATE] [t/TAG]… [av/AVAILABLE_DAY]…​`<br> e.g., `edit 1 n/Marcus Lim e/marcus@email.com`                                                                         |
 | **Find**           | `find [n/NAME] [p/PHONE] [t/TAG] [av/AVAILABLE_DAY]`<br> e.g., `find n/Sarah t/sprinter`                                                                                                                                               |
 | **List**           | `list`                                                                                                                                                                                                                                 |
-| **Sort**           | `sort by/FIELD [ord/ORDER]` <br> e.g., `sort by/pb order/desc`                                                                                                                                                                         |
+| **Sort**           | `sort by/FIELD [dist/DISTANCE] [ord/ORDER]` <br> e.g., `sort by/pb dist/400m ord/desc`                                                                                                                                                |
 | **View Athlete**   | `view INDEX`<br> e.g., `view 3`                                                                                                                                                                                                        |
 | **Add Timing**     | `addtime INDEX dist/DISTANCE min/MINUTES sec/SECONDS`<br> e.g., `addtime 2 dist/400m min/10 sec/30`                                                                                                                                    |
 | **Delete Athlete** | `del INDEX`<br> e.g., `deleteathlete 3`                                                                                                                                                                                                |

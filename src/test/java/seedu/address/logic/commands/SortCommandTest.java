@@ -22,33 +22,45 @@ import seedu.address.testutil.PersonBuilder;
 public class SortCommandTest {
 
     @Test
-    public void execute_sortByPbAscending_usesTwoPointFourKmOnly() throws Exception {
-        Person fasterTwoPointFour = createPersonWithTimings("Alpha", new RunTiming("2.4km", 10, 0.0));
-        Person slowerTwoPointFour = createPersonWithTimings("Bravo", new RunTiming("2.4km", 11, 0.0));
-        Person fasterOtherDistanceOnly = createPersonWithTimings("Charlie", new RunTiming("400m", 0, 50.0));
+    public void execute_sortByPbAscending_forRequestedDistance() throws Exception {
+        Person fasterFourHundred = createPersonWithTimings("Alpha", new RunTiming("400m", 0, 50.0));
+        Person slowerFourHundred = createPersonWithTimings("Bravo", new RunTiming("400m", 0, 55.0));
+        Person onlyOtherDistance = createPersonWithTimings("Charlie", new RunTiming("2.4km", 10, 0.0));
 
-        ModelStubWithPersons model = new ModelStubWithPersons(fasterOtherDistanceOnly,
-                slowerTwoPointFour, fasterTwoPointFour);
+        ModelStubWithPersons model = new ModelStubWithPersons(onlyOtherDistance,
+                slowerFourHundred, fasterFourHundred);
 
-        new SortCommand(SortCommand.SortField.PB, SortCommand.SortOrder.ASC).execute(model);
+        new SortCommand(SortCommand.SortField.PB, "400m", SortCommand.SortOrder.ASC).execute(model);
 
-        assertEquals(List.of(fasterTwoPointFour, slowerTwoPointFour, fasterOtherDistanceOnly),
+        assertEquals(List.of(fasterFourHundred, slowerFourHundred, onlyOtherDistance),
                 model.getFilteredPersonList());
     }
 
     @Test
-    public void execute_sortByPbDescending_usesTwoPointFourKmOnly() throws Exception {
-        Person fasterTwoPointFour = createPersonWithTimings("Alpha", new RunTiming("2.4km", 10, 0.0));
-        Person slowerTwoPointFour = createPersonWithTimings("Bravo", new RunTiming("2.4km", 11, 0.0));
-        Person fasterOtherDistanceOnly = createPersonWithTimings("Charlie", new RunTiming("400m", 0, 50.0));
+    public void execute_sortByPbDescending_forRequestedDistance() throws Exception {
+        Person fasterTenKm = createPersonWithTimings("Alpha", new RunTiming("10km", 38, 0.0));
+        Person slowerTenKm = createPersonWithTimings("Bravo", new RunTiming("10km", 42, 0.0));
+        Person onlyOtherDistance = createPersonWithTimings("Charlie", new RunTiming("400m", 0, 50.0));
 
-        ModelStubWithPersons model = new ModelStubWithPersons(fasterOtherDistanceOnly,
-                fasterTwoPointFour, slowerTwoPointFour);
+        ModelStubWithPersons model = new ModelStubWithPersons(onlyOtherDistance,
+                fasterTenKm, slowerTenKm);
 
-        new SortCommand(SortCommand.SortField.PB, SortCommand.SortOrder.DESC).execute(model);
+        new SortCommand(SortCommand.SortField.PB, "10km", SortCommand.SortOrder.DESC).execute(model);
 
-        assertEquals(List.of(slowerTwoPointFour, fasterTwoPointFour, fasterOtherDistanceOnly),
+        assertEquals(List.of(slowerTenKm, fasterTenKm, onlyOtherDistance),
                 model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_sortByNameAscending_ignoresDistance() throws Exception {
+        Person charlie = createPersonWithTimings("Charlie", new RunTiming("400m", 0, 50.0));
+        Person alpha = createPersonWithTimings("Alpha", new RunTiming("2.4km", 10, 0.0));
+
+        ModelStubWithPersons model = new ModelStubWithPersons(charlie, alpha);
+
+        new SortCommand(SortCommand.SortField.NAME, null, SortCommand.SortOrder.ASC).execute(model);
+
+        assertEquals(List.of(alpha, charlie), model.getFilteredPersonList());
     }
 
     private Person createPersonWithTimings(String name, RunTiming... timings) {

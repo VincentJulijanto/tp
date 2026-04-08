@@ -535,7 +535,7 @@ Use Case: UC9 - Sort Athletes by Personal Best or Name<br>
 Actor: Coach
 
 MSS:
-1. Coach specifies the field and order for sorting.
+1. Coach specifies the field and order for sorting. If sorting by personal best, the coach also specifies the event distance.
 2. Pacebook checks if the specified sorting criteria are valid 
 3. Pacebook sorts the displayed athlete list based on the specified criteria.
 4. Pacebook displays the sorted athlete list in the main window.<br>
