@@ -11,6 +11,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -44,10 +46,13 @@ public class AddAthleteCommandParser implements Parser<AddAthleteCommand> {
                         PREFIX_NAME, PREFIX_AGE, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_EMERGENCY_CONTACT, PREFIX_START_DATE, PREFIX_TAG, PREFIX_AVAILABLE_DAY);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_AGE, PREFIX_ADDRESS,
-                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_EMERGENCY_CONTACT, PREFIX_START_DATE)
-                || !argMultimap.getPreamble().isEmpty()) {
+        if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddAthleteCommand.MESSAGE_USAGE));
+        }
+
+        List<String> missingFields = getMissingFields(argMultimap);
+        if (!missingFields.isEmpty()) {
+            throw new ParseException(buildMissingFieldsMessage(missingFields));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_AGE, PREFIX_PHONE,
@@ -71,10 +76,49 @@ public class AddAthleteCommandParser implements Parser<AddAthleteCommand> {
     }
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
+     * Returns a list of required fields that are missing from the given {@code ArgumentMultimap}.
+     *
+     * @param argMultimap The argument multimap containing the parsed user input.
+     * @return A list of missing required field names with their corresponding prefixes.
      */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    private List<String> getMissingFields(ArgumentMultimap argMultimap) {
+        List<String> missingFields = new ArrayList<>();
+
+        if (argMultimap.getValue(PREFIX_NAME).isEmpty()) {
+            missingFields.add("name (n/)");
+        }
+        if (argMultimap.getValue(PREFIX_AGE).isEmpty()) {
+            missingFields.add("age (a/)");
+        }
+        if (argMultimap.getValue(PREFIX_PHONE).isEmpty()) {
+            missingFields.add("phone (p/)");
+        }
+        if (argMultimap.getValue(PREFIX_EMAIL).isEmpty()) {
+            missingFields.add("email (e/)");
+        }
+        if (argMultimap.getValue(PREFIX_ADDRESS).isEmpty()) {
+            missingFields.add("address (ad/)");
+        }
+        if (argMultimap.getValue(PREFIX_EMERGENCY_CONTACT).isEmpty()) {
+            missingFields.add("emergency contact (ec/)");
+        }
+        if (argMultimap.getValue(PREFIX_START_DATE).isEmpty()) {
+            missingFields.add("start date (d/)");
+        }
+
+        return missingFields;
+    }
+
+    /**
+     * Builds a user-friendly error message listing the missing required fields.
+     *
+     * @param missingFields A list of missing required field names.
+     * @return A formatted error message indicating which required fields are missing.
+     */
+    private String buildMissingFieldsMessage(List<String> missingFields) {
+        if (missingFields.size() == 1) {
+            return "Missing required field: " + missingFields.get(0);
+        }
+        return "Missing required fields: " + String.join(", ", missingFields);
     }
 }
