@@ -12,7 +12,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
@@ -48,7 +47,6 @@ public class AddAthleteCommand extends Command {
             + PREFIX_AVAILABLE_DAY + "Mon "
             + PREFIX_AVAILABLE_DAY + "Wed";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person toAdd;
@@ -70,7 +68,40 @@ public class AddAthleteCommand extends Command {
         }
 
         model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        return new CommandResult(formatAthleteAddedMessage(toAdd));
+    }
+
+    /**
+     * Returns a formatted success message for the specified {@code Person}.
+     *
+     * @param athlete The athlete whose details are to be included in the success message.
+     * @return A formatted success message containing the athlete's details.
+     */
+    public static String formatAthleteAddedMessage(Person athlete) {
+        String tags = athlete.getTags().isEmpty() ? "-" : athlete.getTags().toString();
+        String availableDays = athlete.getAvailableDays().isEmpty() ? "-" : athlete.getAvailableDays().toString();
+
+        return String.format(
+                "New athlete added:%n"
+                        + "  Name: %s%n"
+                        + "  Age: %s%n"
+                        + "  Phone: %s%n"
+                        + "  Email: %s%n"
+                        + "  Address: %s%n"
+                        + "  Emergency Contact: %s%n"
+                        + "  Start Date: %s%n"
+                        + "  Tags: %s%n"
+                        + "  Available Days: %s",
+                athlete.getName(),
+                athlete.getAge(),
+                athlete.getPhone(),
+                athlete.getEmail(),
+                athlete.getAddress(),
+                athlete.getEmergencyContact(),
+                athlete.getStartDate(),
+                tags,
+                availableDays
+        );
     }
 
     @Override
