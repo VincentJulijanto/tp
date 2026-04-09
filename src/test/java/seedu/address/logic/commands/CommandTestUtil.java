@@ -44,8 +44,8 @@ public class CommandTestUtil {
     public static final String VALID_START_DATE_BOB = "02/02/2002";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_EMERGENCY_CONTACT_AMY = "AmyMom 91112222";
-    public static final String VALID_EMERGENCY_CONTACT_BOB = "BobDad 93334444";
+    public static final String VALID_EMERGENCY_CONTACT_AMY = "Mother 91112222";
+    public static final String VALID_EMERGENCY_CONTACT_BOB = "Father 93334444";
     public static final String VALID_AVAILABLE_DAY_AMY = "Mon";
     public static final String VALID_AVAILABLE_DAY_BOB = "Wed";
 
@@ -77,7 +77,8 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "30/02/2025"; // must be a real date
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
-    public static final String INVALID_EMERGENCY_CONTACT_DESC = " " + PREFIX_EMERGENCY_CONTACT + " ";
+    public static final String INVALID_EMERGENCY_CONTACT_DESC =
+            " " + PREFIX_EMERGENCY_CONTACT + "Mother 12345678"; // invalid phone number
     public static final String INVALID_AVAILABLE_DAY_DESC = " "
             + PREFIX_AVAILABLE_DAY + "Day"; // must be a valid day of the week
 
@@ -109,7 +110,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -124,7 +125,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -145,6 +146,7 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
