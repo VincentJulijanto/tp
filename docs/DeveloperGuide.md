@@ -2,6 +2,7 @@
 layout: page
 title: Developer Guide
 toc: true
+permalink: /DeveloperGuide.html
 ---
 
 * Table of Contents
