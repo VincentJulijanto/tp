@@ -516,6 +516,7 @@ Given below are instructions to test the app manually.
 **Note:** The contact list of Pacebook will be written to the hard disk inside the folder called "data" within the directory in which the pacebook.jar file is placed. For convenience, the term "addressbook.json" in this manual test instruction section will refer to this file that contains the contact list stored by Pacebook.
 
 **Note:** For standardised testing that require multiple athletes to be recorded in Pacebook as a prerequisite, the tester is free is to use their own list of athletes or use the sample below for convenience, by copying the sample and overwriting their addressbook.json with the sample:
+</div>
 
 ```json
 {
@@ -559,10 +560,6 @@ Given below are instructions to test the app manually.
   ]
 }
 ```
-
-
-</div>
-
 ---
 ### Launch and Shutdown
 
@@ -1090,6 +1087,7 @@ testers are expected to do more *exploratory* testing.
 **Note:** The contact list of Pacebook will be written to the hard disk inside the folder called "data" within the directory in which the pacebook.jar file is placed. For convenience, the term "addressbook.json" in this manual test instruction section will refer to this file that contains the contact list stored by Pacebook.
 
 **Note:** For standardised testing that require multiple athletes to be recorded in Pacebook as a prerequisite, the tester is free is to use their own list of athletes or use the sample below for convenience, by copying the sample and overwriting their addressbook.json with the sample:
+</div>
 
 ```json
 {
@@ -1133,9 +1131,6 @@ testers are expected to do more *exploratory* testing.
   ]
 }
 ```
-
-
-</div>
 
 ---
 ### Launch and Shutdown
