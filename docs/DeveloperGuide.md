@@ -509,8 +509,9 @@ Extensions:
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="1" class="alert alert-info">
+
+:information_source: **Note:** These instructions only provide a starting point for testers to work on; testers are expected to do more *exploratory* testing.
 
 **Note:** The contact list of Pacebook will be written to the hard disk inside the folder called "data" within the directory in which the pacebook.jar file is placed. For convenience, the term "addressbook.json" in this manual test instruction section will refer to this file that contains the contact list stored by Pacebook.
 
