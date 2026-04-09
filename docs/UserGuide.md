@@ -25,47 +25,16 @@ and essential contact information efficiently**. It is optimised for use via a *
 Pacebook runs on Java, a free software platform required to run the app.
 You do not need to know how to program — just install it once using the links provided below
 
-1. Ensure that Java `17` or above is installed on your computer.<br>
-<div markdown="block" class="alert alert-info">
-**Checking if you have Java installed** <br>
+1. Ensure that Java `17` or above is installed on your computer.
 
-1. Open a command terminal
-
-2. Type the following command and press Enter:
-
-   ```
-   java -version
-   ```
-
-   If Java is installed correctly, you should see the installed Java version displayed.  
-   For example:
-
+   Open a terminal and run `java -version`. You should see output like:
    ```
    openjdk version "17.0.12" 2024-07-16
    ```
-
-   or
-
-   ```
-   java version "17.0.9" 2023-10-17 LTS
-   ```
-
-   If Java is not installed, you may see an error such as:
-
-   ```
-   'java' is not recognized as an internal or external command
-   ```
-
-   or
-
-   ```
-   command not found: java
-   ```
-  
-  If you do not have Java installed, follow the installation guide for your operating system:
-  - **Windows:** [Java installation guide for Windows](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
-  - **Mac:** [Java installation guide for Mac](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-  - **Linux:** [Java installation guide for Linux](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
+   If Java is not installed, follow the guide for your OS:
+   - **Windows:** [Java installation guide for Windows](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
+   - **Mac:** [Java installation guide for Mac](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+   - **Linux:** [Java installation guide for Linux](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W14-4/tp/releases).
 
