@@ -215,14 +215,16 @@ public class ParserUtil {
      */
     public static SortField parseBy(String sortField) throws ParseException {
         requireNonNull(sortField);
-        String trimmedSortField = sortField.trim().toLowerCase();
-        switch (trimmedSortField) {
+        String trimmedBy = sortField.trim().toLowerCase();
+
+        switch (trimmedBy) {
         case "name":
             return SortCommand.SortField.NAME;
         case "pb":
             return SortCommand.SortField.PB;
         default:
-            throw new ParseException(SortCommand.MESSAGE_USAGE);
+            throw new ParseException(String.format(
+                    SortCommand.MESSAGE_INVALID_SORT_FIELD, sortField));
         }
     }
 
@@ -234,14 +236,16 @@ public class ParserUtil {
      */
     public static SortOrder parseOrder(String sortOrder) throws ParseException {
         requireNonNull(sortOrder);
-        String trimmedSortOrder = sortOrder.trim().toLowerCase();
-        switch (trimmedSortOrder) {
+        String trimmedOrder = sortOrder.trim().toLowerCase();
+
+        switch (trimmedOrder) {
         case "asc":
             return SortCommand.SortOrder.ASC;
         case "desc":
             return SortCommand.SortOrder.DESC;
         default:
-            throw new ParseException(SortCommand.MESSAGE_USAGE);
+            throw new ParseException(String.format(
+                    SortCommand.MESSAGE_INVALID_SORT_ORDER, sortOrder));
         }
     }
 

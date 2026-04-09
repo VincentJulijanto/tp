@@ -27,6 +27,12 @@ public class SortCommand extends Command {
             + "Examples: " + COMMAND_WORD + " by/name ord/asc\n"
             + "          " + COMMAND_WORD + " by/pb dist/400m ord/desc";
 
+    public static final String MESSAGE_INVALID_SORT_FIELD =
+            "Invalid sort field: '%s'.\nSupported fields: name, pb\nExample: sort by/name ord/desc";
+
+    public static final String MESSAGE_INVALID_SORT_ORDER =
+            "Invalid sort order: '%s'.\nSupported orders: asc, desc\nExample: sort by/pb dist/400m ord/desc";
+
     public static final String MESSAGE_SUCCESS = "Sorted athletes by %s in %s order.";
     public static final String MESSAGE_SUCCESS_WITH_DISTANCE = "Sorted athletes by %s for %s in %s order.";
 
