@@ -160,7 +160,7 @@ Example:
 </div>
 
 <div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
-Duplicate athletes may be rejected if an athlete with the **same name and phone number** already exists in Pacebook.
+Duplicate athletes may be rejected if an athlete with the **same phone number** already exists in Pacebook.
 </div>
 
 <div markdown="block" class="alert alert-success">✅ **Expected output:**
