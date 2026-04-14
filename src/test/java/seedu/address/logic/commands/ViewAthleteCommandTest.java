@@ -14,6 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.RunTiming;
 
 public class ViewAthleteCommandTest {
 
@@ -22,6 +23,7 @@ public class ViewAthleteCommandTest {
     @Test
     public void execute_validIndex_success() throws Exception {
         Person athlete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        athlete.addRunTiming(new RunTiming("2.4km", 10, 30.0));
         ViewAthleteCommand command = new ViewAthleteCommand(INDEX_FIRST_PERSON);
 
         CommandResult result = command.execute(model);
@@ -33,6 +35,8 @@ public class ViewAthleteCommandTest {
         assertTrue(resultMessage.contains("Start Date:"));
         assertFalse(resultMessage.contains("StartDate:"));
         assertTrue(resultMessage.contains("Run Timings:"));
+        assertTrue(resultMessage.contains("2.4km, 10min 30s"));
+        assertFalse(resultMessage.contains("30.0s"));
     }
 
     @Test

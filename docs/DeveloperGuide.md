@@ -843,8 +843,8 @@ Expected: The result display should display number of persons listed.
        Test case: `addtime 1 dist/2.4km min/10 sec/10`
        Expected: The following success message should be displayed in the result display if using the addressbook.json sample above:
        ```
-       Added timing for Irfan Ibrahim: 2.4km in 10min 10.0s
-       New personal best for 2.4km: 10min 10.0s
+       Added timing for Irfan Ibrahim: 2.4km in 10min 10s
+       New personal best for 2.4km: 10min 10s
        ```
        Expected: Run the following command: `view 1`. The newly added timings should appear in the list of run timings for the athlete at that index
 
@@ -852,8 +852,8 @@ Expected: The result display should display number of persons listed.
        Test case: `addtime 1 dist/10km min/45 sec/30`
        Expected: The following success message should be displayed in the result display if using the addressbook.json sample above:
         ```
-       Added timing for Irfan Ibrahim: 10km in 45min 30.0s
-       New personal best for 10km: 45min 30.0s
+       Added timing for Irfan Ibrahim: 10km in 45min 30s
+       New personal best for 10km: 45min 30s
        ```
        Expected: Run the following command: `view 1`. The newly added timings should appear in the list of run timings for the athlete at that index
 
@@ -861,8 +861,8 @@ Expected: The result display should display number of persons listed.
        Test case: `addtime 1 dist/10km min/x sec/y`, where x mins y seconds is faster than all 10km timings run by the first index athlete in the person list panel
        Expected: The following success message should be displayed in the result display if using the addressbook.json sample above:
        ```
-       Added timing for Irfan Ibrahim: 10km in 41min 0.0s
-       New personal best for 10km: 41min 0.0s
+       Added timing for Irfan Ibrahim: 10km in 41min 0s
+       New personal best for 10km: 41min 0s
        ```
 
 1. Add an invalid timing to a valid index for 2.4km distance
@@ -954,7 +954,7 @@ Expected: The result display should display number of persons listed.
     1. Test case: `deltime x 1`, where x is a valid athlete index
 
        Expected: The following success message should be displayed in the result display, if using the addressbook.json sample:
-       `Deleted timing for Irfan Ibrahim: 10km in 45min 30.0s`
+       `Deleted timing for Irfan Ibrahim: 10km in 45min 30s`
 
        Expected: Run the following command: `view x`, where x is the index that was previously entered. The run timings should include all the previous run timings after index `x` shifted up in the records by 1 position, and the run timing that corresponds to the index specified in the delete command should no longer appear in the list.
 
@@ -1307,24 +1307,24 @@ Expected: The result display should display number of persons listed.
 ### Help command
 1. Entering the help command
     1. Test case: `help`<br>
-       Expected: The result display should display the following:
-       ```
-       Commands summary:
-        ------------------------------------------------------
-        add           n/NAME a/AGE p/PHONE e/EMAIL ad/ADDRESS d/START_DATE ec/EMERGENCY_CONTACT [t/TAG]... [av/AVAILABLE_DAY]...
-        addtime       INDEX dist/DISTANCE min/MINUTES sec/SECONDS
-        del           INDEX
-        deltime       ATHLETE_INDEX TIMING_INDEX
-        edit          INDEX [n/NAME] [a/AGE] [p/PHONE] [e/EMAIL] [ad/ADDRESS] [ec/EMERGENCY_CONTACT] [d/START_DATE] [ta/TAG]... [td/TAG]... [av/AVAILABLE_DAY]...
-        find          [n/NAME]... [p/PHONE]... [t/TAG]... [av/AVAILABLE_DAY]...
-        sort          by/FIELD [ord/ORDER]   (fields: name, pb  |  orders: asc, desc)
-        view          INDEX
-        list
-        clear
-        exit
-        ------------------------------------------------------
-        For full details: https://ay2526s2-cs2103t-w14-4.github.io/tp/UserGuide.html
-       ```
+       Expected: The result display should display a command summary with the following entries:
+
+       | Command | Format |
+       | --- | --- |
+       | `add` | `n/NAME a/AGE p/PHONE e/EMAIL ad/ADDRESS d/START_DATE ec/EMERGENCY_CONTACT [t/TAG]... [av/AVAILABLE_DAY]...` |
+       | `addtime` | `INDEX dist/DISTANCE min/MINUTES sec/SECONDS` |
+       | `del` | `INDEX` |
+       | `deltime` | `ATHLETE_INDEX TIMING_INDEX` |
+       | `edit` | `INDEX [n/NAME] [a/AGE] [p/PHONE] [e/EMAIL] [ad/ADDRESS] [ec/EMERGENCY_CONTACT] [d/START_DATE] [ta/TAG]... [td/TAG]... [av/AVAILABLE_DAY]...` |
+       | `find` | `[n/NAME]... [p/PHONE]... [t/TAG]... [av/AVAILABLE_DAY]...` |
+       | `sort` | `by/FIELD [ord/ORDER]` where fields are `name` or `pb`, and orders are `asc` or `desc` |
+       | `view` | `INDEX` |
+       | `list` | No parameters |
+       | `clear` | No parameters |
+       | `exit` | No parameters |
+
+       Expected: The result display should also include the User Guide URL:
+       `https://ay2526s2-cs2103t-w14-4.github.io/tp/UserGuide.html`
        <br>
        There should be no changes to the person list panel
 

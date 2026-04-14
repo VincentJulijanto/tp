@@ -112,8 +112,7 @@ public class AddTimingCommand extends Command {
             resultMessage += "New personal best for "
                     + timing.getDistance()
                     + ": "
-                    + timing.getMinutes() + "min "
-                    + timing.getSeconds() + "s\n";
+                    + timing.getFormattedDuration() + "\n";
             logger.info("New personal best recorded for athlete " + athlete.getName()
                     + " at distance " + timing.getDistance());
         }

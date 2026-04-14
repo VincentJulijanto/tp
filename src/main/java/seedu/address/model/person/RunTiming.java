@@ -95,12 +95,31 @@ public class RunTiming {
     }
 
     /**
+     * Returns this timing's duration in display format.
+     *
+     * @return A formatted duration string, for example {@code "10min 30s"}.
+     */
+    public String getFormattedDuration() {
+        return this.minutes + "min " + getFormattedSeconds() + "s";
+    }
+
+    /**
+     * Returns the seconds component without an unnecessary trailing {@code .0}.
+     */
+    private String getFormattedSeconds() {
+        if (seconds == Math.rint(seconds)) {
+            return String.valueOf((long) seconds);
+        }
+        return String.valueOf(seconds);
+    }
+
+    /**
      * Returns a compact display format of this timing.
      *
      * @return A formatted timing string, for example {@code "2.4km, 10min 30s"}.
      */
     public String getPrintFormat() {
-        return this.distance + ", " + this.minutes + "min " + this.seconds + "s";
+        return this.distance + ", " + getFormattedDuration();
     }
 
     /**
@@ -110,7 +129,7 @@ public class RunTiming {
      */
     @Override
     public String toString() {
-        return this.distance + " in " + this.minutes + "min " + this.seconds + "s";
+        return this.distance + " in " + getFormattedDuration();
     }
 
     /**

@@ -115,8 +115,8 @@ public class PersonTest {
         person.addRunTiming(new RunTiming("2.4km", 10, 30.0));
         String display = person.getRunTimingsDisplay();
         assertTrue(display.startsWith("Run Timings: "));
-        assertTrue(display.contains("400m, 0min 50.0s"));
-        assertTrue(display.contains("2.4km, 10min 30.0s"));
+        assertTrue(display.contains("400m, 0min 50s"));
+        assertTrue(display.contains("2.4km, 10min 30s"));
         assertTrue(display.contains(" | "));
     }
 

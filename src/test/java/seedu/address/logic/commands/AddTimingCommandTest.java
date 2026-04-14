@@ -65,6 +65,8 @@ public class AddTimingCommandTest {
         String resultMessage = result.getFeedbackToUser();
         assertTrue(resultMessage.contains("Added timing for " + athlete.getName()));
         assertTrue(resultMessage.contains(timing.toString()));
+        assertTrue(resultMessage.contains("2.4km in 10min 30s"));
+        assertFalse(resultMessage.contains("30.0s"));
     }
 
     /**
@@ -134,6 +136,7 @@ public class AddTimingCommandTest {
         String resultMessage = result.getFeedbackToUser();
         assertTrue(resultMessage.contains("Added timing for " + athlete.getName()));
         assertTrue(resultMessage.contains("New personal best for 2.4km"));
+        assertTrue(resultMessage.contains("New personal best for 2.4km: 10min 15s"));
     }
 
     /**

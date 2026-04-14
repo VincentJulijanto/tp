@@ -26,11 +26,13 @@ public class DeleteTimingCommandTest {
         RunTiming timing = new RunTiming("2.4km", 10, 30.0);
         athlete.addRunTiming(timing);
 
-        DeleteTimingCommand command = new DeleteTimingCommand(INDEX_FIRST_PERSON, INDEX_FIRST_PERSON);
+        Index addedTimingIndex = Index.fromOneBased(athlete.getRunTimings().size());
+        DeleteTimingCommand command = new DeleteTimingCommand(INDEX_FIRST_PERSON, addedTimingIndex);
         CommandResult result = command.execute(model);
 
         String resultMessage = result.getFeedbackToUser();
         assertTrue(resultMessage.contains("Deleted timing for " + athlete.getName()));
+        assertTrue(resultMessage.contains("2.4km in 10min 30s"));
     }
 
     @Test
