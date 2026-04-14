@@ -51,7 +51,7 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `del 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -1354,12 +1354,3 @@ Expected: The result display should display number of persons listed.
 
     1. Test case: `exit`
        Expected: The addressbook.json should have Aryan Lim in it, with his personal information and 3 run records
-
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
