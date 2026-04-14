@@ -122,7 +122,7 @@ These needs are built around the pace and demands of a real club coaching workfl
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are values you need to provide.
-  For example, in `addathlete n/NAME`, `NAME` should be replaced with the athlete’s actual name, such as `addathlete n/John Doe`.
+  For example, in `add n/NAME`, `NAME` should be replaced with the athlete’s actual name, such as `add n/John Doe`.
 
 * Items in square brackets are optional.
   For example, `n/NAME [t/TAG]` can be used as `n/John Doe t/sprinter` or just `n/John Doe`.
@@ -160,7 +160,7 @@ Example:
 </div>
 
 <div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
-Duplicate athletes may be rejected if an athlete with the **same name and phone number** already exists in Pacebook.
+Duplicate athletes may be rejected if an athlete with the **same phone number** already exists in Pacebook.
 </div>
 
 <div markdown="block" class="alert alert-success">✅ **Expected output:**
